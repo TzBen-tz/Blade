@@ -1,2 +1,2 @@
-# BB
+# script broken blade
 roblox
