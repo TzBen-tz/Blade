@@ -274,7 +274,7 @@ local targetBosses = {
     , ["struggler"] = false
     , ["blackswordsman"] = false 
     , ["authur"] = false 
-    , ["space invarer"] = false
+    , ["space invader"] = false
 }
 
 local worldLocations = {
