@@ -93,7 +93,7 @@ Title.BackgroundTransparency = 1
 Title.Position = UDim2.new(0, 18, 0, 14)
 Title.Size = UDim2.new(0, 300, 0, 25)
 Title.Font = Enum.Font.GothamBold
-Title.Text = "★ <font color='rgb(255, 255, 255)'>STARGOD</font> <font color='rgb(187, 126, 250)'>HUB</font> ★"
+Title.Text = "★ <font color='rgb(255, 255, 255)'>BEN UPDATE</font> <font color='rgb(187, 126, 250)'>HUB</font> ★"
 Title.RichText = true
 Title.TextColor3 = Colors.TextMain
 Title.TextSize = 15
@@ -116,9 +116,9 @@ ToggleUIBtn.Position = UDim2.new(0, 25, 1, -75)
 ToggleUIBtn.Size = UDim2.new(0, 55, 0, 55) -- Ukuran aspek rasio sama (55x55) agar bulat sempurna
 ToggleUIBtn.BackgroundColor3 = Colors.PanelBg
 ToggleUIBtn.Font = Enum.Font.GothamBold
-ToggleUIBtn.Text = "<font color='rgb(255, 255, 255)'>★</font><br/><font color='rgb(187, 126, 250)'>STAR</font>"
+ToggleUIBtn.Text = "<font color='rgb(255, 255, 255)'>★</font><br/><font color='rgb(187, 126, 250)'>Ben_update</font>"
 ToggleUIBtn.RichText = true
-ToggleUIBtn.TextSize = 11
+ToggleUIBtn.TextSize = 8
 ToggleUIBtn.LineHeight = 1.1
 
 -- Membuat tombol berbentuk lingkaran total (CornerRadius = 1)
@@ -257,11 +257,24 @@ local ListWorld = Instance.new("UIListLayout") ListWorld.Parent = ScrollWorld; L
 local flags = {autofarm = false, autoclick = false, autoskillX = false, autoskillC = false, autoskill = false}
 
 local targetBosses = {
-    ["nameless hero"] = false, ["moraros"] = false, ["magador"] = false,
-    ["ragaros"] = false, ["velik"] = false, ["nivaron"] = false,
-    ["gelaros"] = false, ["hraegon"] = false, ["surtrik"] = false, ["thorvak"] = false,
-    ["niflor"] = false, ["artoria"] = false, ["veyrath"] = false, 
-    ["mad dog"] = false, ["struggler"] = false, ["blackswordsman"] = false, ["authur"] = false
+    ["nameless hero"] = false
+    , ["moraros"] = false
+    , ["magador"] = false,
+    ["ragaros"] = false
+    , ["velik"] = false
+    , ["nivaron"] = false,
+    ["gelaros"] = false
+    , ["hraegon"] = false
+    , ["surtrik"] = false
+    , ["thorvak"] = false,
+    ["niflor"] = false
+    , ["artoria"] = false
+    , ["veyrath"] = false, 
+    ["mad dog"] = false
+    , ["struggler"] = false
+    , ["blackswordsman"] = false 
+    , ["authur"] = false 
+    , ["space invarer"] = false
 }
 
 local worldLocations = {
