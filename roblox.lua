@@ -266,15 +266,15 @@ local targetBosses = {
     ["gelaros"] = false
     , ["hraegon"] = false
     , ["surtrik"] = false
-    , ["thorvak"] = false,
-    ["niflor"] = false
+    , ["thorvak"] = false
+    ,  ["niflor"] = false
     , ["artoria"] = false
-    , ["veyrath"] = false, 
-    ["mad dog"] = false
+    , ["veyrath"] = false
+    ,   ["mad dog"] = false
     , ["struggler"] = false
     , ["blackswordsman"] = false 
     , ["authur"] = false 
-    , ["space invader"] = false
+    , ["space Invader"] = false
 }
 
 local worldLocations = {
