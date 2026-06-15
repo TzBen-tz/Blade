@@ -56,7 +56,7 @@ Frame.Active = true
 local dragToggle, dragStart, startPos
 local function updateInput(input)
     local delta = input.Position - dragStart
-    local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y ,)
+    local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
     TweenService:Create(Frame, TweenInfo.new(0.1), {Position = position}):Play()
 end
 Frame.InputBegan:Connect(function(input)
@@ -257,7 +257,7 @@ local ListWorld = Instance.new("UIListLayout") ListWorld.Parent = ScrollWorld; L
 -- DATA STATES & TARGET CONFIG
 -- ==========================================
 
-local flags = {autofarm = false, autoclick = false, autoskillX = false, autoskillC = false, autoskill = false}
+local flags = {autofarm = false, autoclick = false, autoskillX = false, autoskillC = false, autoskill = false,autoskiX1 = false}
 
 local targetBosses = {
     ["nameless hero"] = false
@@ -380,7 +380,7 @@ ToggleClick.MouseButton1Click:Connect(function() flags.autoclick = not flags.aut
 ToggleSkillX.MouseButton1Click:Connect(function() flags.autoskillX = not flags.autoskillX updateToggleVisual(ToggleSkillX, StrokeSkillX, flags.autoskillX, "AUTO SKILL (X)") end)
 ToggleSkillC.MouseButton1Click:Connect(function() flags.autoskillC = not flags.autoskillC updateToggleVisual(ToggleSkillC, StrokeSkillC, flags.autoskillC, "AUTO SKILL (C)") end)
 ToggleSkill.MouseButton1Click:Connect(function() flags.autoskill = not flags.autoskill updateToggleVisual(ToggleSkill, StrokeSkill, flags.autoskill, "AUTO SKILL (V)") end)
-ToggleSkill.MouseButton1Click:Connect(function() flags.autoskillX1 = not flags.autoskillX1 updateToggleVisual(ToggleSkillX1, StrokeSkillX1, flags.autoskill, "AUTO SKILL (R)") end)
+ToggleSkillX1.MouseButton1Click:Connect(function() flags.autoskillX1 = not flags.autoskillX1 updateToggleVisual(ToggleSkillX1, StrokeSkillX1, flags.autoskillX1, "AUTO SKILL (R)") end)
 
 -- ==========================================
 -- SMART MULTI-MAP SCANNER (ANTI-STUCK)
@@ -522,7 +522,7 @@ end)
 task.spawn(function()
     while true do
         task.wait(0.7)
-        if flags.autofarm and flags.autoskill then
+        if flags.autofarm and flags.autoskillX1 then
             pcall(function()
                 if getValidTargetInCurrentMap() then
                     vim:SendKeyEvent(true, Enum.KeyCode.R, false, game)
