@@ -199,6 +199,7 @@ local ToggleClick, StrokeClick = createToggle("ToggleClick", "AUTO ATTACK/CLICK"
 local ToggleSkillX, StrokeSkillX = createToggle("ToggleSkillX", "AUTO SKILL (X)", 3)
 local ToggleSkillC, StrokeSkillC = createToggle("ToggleSkillC", "AUTO SKILL (C)", 4)
 local ToggleSkill, StrokeSkill = createToggle("ToggleSkill", "AUTO SKILL (V)", 5)
+local ToggleSkill, StrokeSkill = createToggle("ToggleSkill", "AUTO SKILL (R)", 6)
 
 -- SCROLLING FRAME 1: SELEKSI BOSS
 local BossLabel = Instance.new("TextLabel")
@@ -287,6 +288,11 @@ local worldLocations = {
     ["JOTUNHEIM"]     = Vector3.new(7000, 120, -7000)
 }
 
+-- Cached Event Path: ReplicatedStorage.Remote_Event
+local Event = game:GetService("ReplicatedStorage").Remote_Event
+Event:FireServer(
+    buffer.fromstring("\x93\v\xCC\x8E\x91\x88\xACskillUseType\xA6manual\xA6facing\xC7\x02\x93\xCB\xBF\xE6\xA0\x8E\x80\x00\x00\x00\x00\xCB?\xE6\xA0\xAE\x80\x00\x00\x00\xAAweaponType\xA5Sword\xA8position\xC7\x02\x93\xCB@\x8F\xB7I`\x00\x00\x00\xCB@LC\xCC\x80\x00\x00\x00\xCB\xC0kI~ \x00\x00\x00\xAEbasisDirection\xC7\x02\x93\xCB\xBF\xE6\xA0\x9E\x80\x00\x00\x00\x00\xCB?\xE6\xA0\x9E\x80\x00\x00\x00\xACactivationId\x05\xA8actionId\xA9\xE9\x95\xBF\xE5\x89\x91/C2\xA2we\xC2")
+)
 -- ==========================================
 -- INTERACTION & SELECTION GENERATOR
 -- ==========================================
@@ -377,6 +383,7 @@ ToggleClick.MouseButton1Click:Connect(function() flags.autoclick = not flags.aut
 ToggleSkillX.MouseButton1Click:Connect(function() flags.autoskillX = not flags.autoskillX updateToggleVisual(ToggleSkillX, StrokeSkillX, flags.autoskillX, "AUTO SKILL (X)") end)
 ToggleSkillC.MouseButton1Click:Connect(function() flags.autoskillC = not flags.autoskillC updateToggleVisual(ToggleSkillC, StrokeSkillC, flags.autoskillC, "AUTO SKILL (C)") end)
 ToggleSkill.MouseButton1Click:Connect(function() flags.autoskill = not flags.autoskill updateToggleVisual(ToggleSkill, StrokeSkill, flags.autoskill, "AUTO SKILL (V)") end)
+ToggleSkill.MouseButton1Click:Connect(function() flags.autoskill = not flags.autoskill updateToggleVisual(ToggleSkill, StrokeSkill, flags.autoskill, "AUTO SKILL (R)") end)
 
 -- ==========================================
 -- SMART MULTI-MAP SCANNER (ANTI-STUCK)
@@ -509,6 +516,21 @@ task.spawn(function()
                     vim:SendKeyEvent(true, Enum.KeyCode.V, false, game)
                     task.wait(0.02)
                     vim:SendKeyEvent(false, Enum.KeyCode.V, false, game)
+                end
+            end)
+        end
+    end
+end)
+
+task.spawn(function()
+    while true do
+        task.wait(0.6)
+        if flags.autofarm and flags.autoskill then
+            pcall(function()
+                if getValidTargetInCurrentMap() then
+                    vim:SendKeyEvent(true, Enum.KeyCode.R, false, game)
+                    task.wait(0.02)
+                    vim:SendKeyEvent(false, Enum.KeyCode.R, false, game)
                 end
             end)
         end
