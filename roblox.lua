@@ -56,7 +56,7 @@ Frame.Active = true
 local dragToggle, dragStart, startPos
 local function updateInput(input)
     local delta = input.Position - dragStart
-    local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y ,)
     TweenService:Create(Frame, TweenInfo.new(0.1), {Position = position}):Play()
 end
 Frame.InputBegan:Connect(function(input)
@@ -199,7 +199,7 @@ local ToggleClick, StrokeClick = createToggle("ToggleClick", "AUTO ATTACK/CLICK"
 local ToggleSkillX, StrokeSkillX = createToggle("ToggleSkillX", "AUTO SKILL (X)", 3)
 local ToggleSkillC, StrokeSkillC = createToggle("ToggleSkillC", "AUTO SKILL (C)", 4)
 local ToggleSkill, StrokeSkill = createToggle("ToggleSkill", "AUTO SKILL (V)", 5)
-local ToggleSkill, StrokeSkill = createToggle("ToggleSkill", "AUTO SKILL (R)", 6)
+local ToggleSkillX1, StrokeSkillX1 = createToggle("ToggleSkill", "AUTO SKILL (R)", 6)
 
 
 -- DUPE
@@ -386,7 +386,7 @@ ToggleClick.MouseButton1Click:Connect(function() flags.autoclick = not flags.aut
 ToggleSkillX.MouseButton1Click:Connect(function() flags.autoskillX = not flags.autoskillX updateToggleVisual(ToggleSkillX, StrokeSkillX, flags.autoskillX, "AUTO SKILL (X)") end)
 ToggleSkillC.MouseButton1Click:Connect(function() flags.autoskillC = not flags.autoskillC updateToggleVisual(ToggleSkillC, StrokeSkillC, flags.autoskillC, "AUTO SKILL (C)") end)
 ToggleSkill.MouseButton1Click:Connect(function() flags.autoskill = not flags.autoskill updateToggleVisual(ToggleSkill, StrokeSkill, flags.autoskill, "AUTO SKILL (V)") end)
-ToggleSkill.MouseButton1Click:Connect(function() flags.autoskill = not flags.autoskill updateToggleVisual(ToggleSkill, StrokeSkill, flags.autoskill, "AUTO SKILL (R)") end)
+ToggleSkill.MouseButton1Click:Connect(function() flags.autoskillX1 = not flags.autoskillX1 updateToggleVisual(ToggleSkillX1, StrokeSkillX1, flags.autoskill, "AUTO SKILL (R)") end)
 
 -- ==========================================
 -- SMART MULTI-MAP SCANNER (ANTI-STUCK)
